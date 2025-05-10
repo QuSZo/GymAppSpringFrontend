@@ -1,0 +1,36 @@
+@import "@/styles/variables.module";
+
+.container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  flex-grow: 1;
+
+  .info {
+    color: rgb($color-text-accent);
+    @include font-small;
+  }
+
+  .status {
+    @include font-huge-light;
+  }
+
+  .statusMessage {
+    @include font-medium-bold;
+  }
+
+  .buttonContainer {
+    padding-top: 10px;
+    display: flex;
+    gap: 20px;
+    .button {
+      padding: 10px 20px;
+      text-decoration: none;
+      color: rgb($color-text);
+      @include font-tiny;
+    }
+  }
+}

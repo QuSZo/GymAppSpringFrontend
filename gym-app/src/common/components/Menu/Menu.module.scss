@@ -1,0 +1,55 @@
+@import "@/styles/variables.module";
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  background-color: rgb($color-secondary);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 30px 5vw;
+
+  .appName a {
+    text-decoration: none;
+    color: rgb($color-text);
+    @include font-normal-bold;
+  }
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    list-style: none;
+    gap: 5vw;
+
+    .menuItem a {
+      color: rgb($color-text);
+      @include font-small;
+      text-decoration: none;
+
+      &:hover {
+        color: rgb($color-text-accent);
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 20px 5vw;
+
+    .appName a {
+      @include font-medium-bold;
+    }
+
+    .menu {
+      gap: 5vw;
+
+      .menuItem a {
+        @include font-smaller;
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+@import "@/styles/variables.module";
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  .headerText {
+    @include font-bigger-light;
+  }
+
+  .inputContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .error {
+      @include font-tiny;
+      color: rgb($color-red);
+    }
+
+    .input {
+      input {
+        padding: 15px 30px;
+      }
+    }
+    .passwordRecoveryLink {
+      display: flex;
+      justify-content: right;
+      a {
+        color: rgb($color-text);
+        @include font-smaller;
+        text-decoration: none;
+        width: fit-content;
+
+        &:hover {
+          color: rgb($color-text-accent);
+        }
+      }
+    }
+  }
+
+  .button {
+    padding: 20px 30px;
+  }
+
+  .registerLink {
+    color: rgb($color-text);
+    @include font-smaller;
+    text-decoration: none;
+    width: fit-content;
+
+    &:hover {
+      color: rgb($color-text-accent);
+    }
+  }
+}
+.loader {
+  position: fixed;
+  bottom: 100px;
+}

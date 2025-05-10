@@ -1,0 +1,34 @@
+{
+  "name": "gym-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "start:build": "next build && next start",
+    "lint": "next lint && npx prettier \"src/**/*.{js,ts,jsx,tsx,css,scss}\"",
+    "lint:fix": "next lint --fix & npx prettier --write \"src/**/*.{js,ts,jsx,tsx,css,scss}\""
+  },
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "js-cookie": "^3.0.5",
+    "jwt-decode": "^4.0.0",
+    "next": "14.2.14",
+    "react": "^18",
+    "react-cookie": "^7.2.2",
+    "react-day-picker": "^9.2.1",
+    "react-dom": "^18",
+    "sass": "^1.79.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.14",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "3.3.3",
+    "typescript": "^5"
+  }
+}

@@ -1,0 +1,33 @@
+@import "@/styles/variables.module";
+
+.overflow {
+  .dialog {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    gap: 20px;
+
+    .workoutDate {
+      text-align: center;
+      @include font-medium;
+    }
+
+    .buttonContainer {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .overflow {
+    .dialog {
+      width: 80%;
+
+      .workoutDate {
+        @include font-small;
+      }
+    }
+  }
+}

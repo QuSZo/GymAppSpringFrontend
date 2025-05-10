@@ -1,0 +1,50 @@
+@import "@/styles/variables.module";
+
+.dialog {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 60%;
+
+  .dialogTitle {
+    @include font-medium-bold;
+  }
+
+  .dialogForm {
+    display: flex;
+    gap: 20px;
+  }
+
+  .dialogExerciseWrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+
+    .dialogExercise {
+      display: flex;
+      justify-content: left;
+      background-color: transparent;
+      color: rgb($color-text);
+      border-top: 2px solid rgb($color-border);
+      padding: 10px 5px;
+      @include font-tiny-light;
+
+      &:hover {
+        background-color: rgb($color-primary);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .overflow {
+    .dialog {
+      width: 80%;
+      .dialogForm {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  }
+}
