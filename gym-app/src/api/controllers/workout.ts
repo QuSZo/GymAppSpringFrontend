@@ -36,7 +36,7 @@ export async function getWorkout(id: UUID, router: ReturnType<typeof useRouter>)
 
 export async function getWorkoutByDate(date: Date, router: ReturnType<typeof useRouter>, signal?: AbortSignal): Promise<workoutDetailsDto> {
   const dateString = date.toLocaleDateString("sv-SE");
-  const response = await customQuery("workouts/" + `${dateString}`, router, signal);
+  const response = await customQuery("workouts/by-date/" + `${dateString}`, router, signal);
   return response.json();
 }
 

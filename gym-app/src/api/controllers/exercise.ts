@@ -33,5 +33,5 @@ export async function deleteExercise(id: UUID, router: ReturnType<typeof useRout
 }
 
 export async function updateExerciseNumber(id: UUID, command: updateExerciseCommand, router: ReturnType<typeof useRouter>) {
-  await customCommand<updateExerciseCommand>(`exercises/${id}/exercise-number`, "PUT", router, command);
+  await customCommand<updateExerciseCommand>(`exercises/${id}/exercise-number`, "PATCH", router, command);
 }

@@ -26,18 +26,18 @@ export type signInResponse = {
 };
 
 export async function signIn(command: signInCommand, router: ReturnType<typeof useRouter>): Promise<signInResponse> {
-  const response = await customCommand("users/sign-in", "POST", router, command);
+  const response = await customCommand("auth/login", "POST", router, command);
   return response.json();
 }
 
 export async function register(command: registerCommand, router: ReturnType<typeof useRouter>) {
-  await customCommand<registerCommand>("users/sign-up", "POST", router, command);
+  await customCommand<registerCommand>("auth/register", "POST", router, command);
 }
 
 export async function forgotPassword(command: forgotPasswordCommand, router: ReturnType<typeof useRouter>) {
-  await customCommand<forgotPasswordCommand>("users/forgot-password", "POST", router, command);
+  await customCommand<forgotPasswordCommand>("auth/forgot-password", "POST", router, command);
 }
 
 export async function resetPassword(command: resetPasswordCommand, router: ReturnType<typeof useRouter>) {
-  await customCommand<resetPasswordCommand>("users/reset-password", "POST", router, command);
+  await customCommand<resetPasswordCommand>("auth/reset-password", "POST", router, command);
 }
