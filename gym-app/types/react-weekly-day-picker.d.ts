@@ -1,0 +1,1 @@
+declare module 'react-weekly-day-picker';

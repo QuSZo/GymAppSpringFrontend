@@ -1,4 +1,4 @@
-import styles from "@/app/(auth)/reset-password-confirmation/page.module.scss";
+import styles from "@/app/(auth)/register-confirmation/page.module.scss";
 import { Icon } from "@/common/components/Icons/Icon/Icon";
 import Link from "next/link";
 import Button from "@/common/components/Button/Button";

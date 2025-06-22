@@ -7,6 +7,17 @@
   align-items: center;
   gap: 20px;
 
+  .dayCircleContainer {
+    background-color: transparent !important;
+    height: 100px;
+  }
+
+  .dayCircleTodayText{
+    color: transparent;
+    position: absolute;
+    top: -20px;
+  }
+
   .iconWrapper {
     display: flex;
     gap: 20px;

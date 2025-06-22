@@ -22,7 +22,7 @@ export default function RegisterPage() {
     e.preventDefault();
     setLoading(true);
     try {
-      await register({ email: email, password: password }, router);
+      await register({ email: email, password: password });
       router.push("/register-confirmation");
     } catch (error) {
       if (error instanceof ApiError) {

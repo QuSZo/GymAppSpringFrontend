@@ -19,6 +19,7 @@
     "react-cookie": "^7.2.2",
     "react-day-picker": "^9.2.1",
     "react-dom": "^18",
+    "react-weekly-day-picker": "^1.0.3",
     "sass": "^1.79.4"
   },
   "devDependencies": {

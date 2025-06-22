@@ -10,7 +10,9 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       </div>
       <div className={styles.left}>{children}</div>
       <div className={styles.imageWrapper}>
-        <Image src="/assets/gym.jpg" alt="Gym photo" fill className={styles.image}></Image>
+          <div className={styles.image2ndWrapper}>
+              <Image src="/assets/agh.svg" alt="Gym photo" fill className={styles.image}></Image>
+          </div>
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import Dialog, { DialogProps } from "@/common/components/Dialog/Dialog";
 import Button from "@/common/components/Button/Button";
 import { copyWorkout, getWorkoutByDate, workoutDetailsDto } from "@/api/controllers/workout";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import WorkoutSummary from "@/common/components/WorkoutSummary/WorkoutSummary";
 import { useLoaderContext } from "@/common/contexts/loaderContext";
 
@@ -18,11 +17,10 @@ export default function SummaryWorkoutDialog(props: SummaryWorkoutDialogProps) {
   const [workout, setWorkout] = useState<workoutDetailsDto>();
   const [isLoading, setIsLoading] = useState(true);
   const { setLoading } = useLoaderContext();
-  const router = useRouter();
 
   async function getWorkout() {
     setIsLoading(true);
-    const workout = await getWorkoutByDate(props.sourceDate, router).catch(() => undefined);
+    const workout = await getWorkoutByDate(props.sourceDate).catch(() => undefined);
     setWorkout(workout);
     setIsLoading(false);
   }
@@ -30,7 +28,7 @@ export default function SummaryWorkoutDialog(props: SummaryWorkoutDialogProps) {
   async function onCopyWorkout() {
     props.onClose();
     setLoading(true);
-    copyWorkout(props.destinationDate, props.sourceDate, router)
+    copyWorkout(props.destinationDate, props.sourceDate)
       .then(props.onRefresh)
       .finally(() => setLoading(false));
   }

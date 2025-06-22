@@ -1,7 +1,8 @@
 import { workoutDetailsDto } from "@/api/controllers/workout";
-import ExerciseSkeleton from "@/common/components/Exercise/ExerciseSkeleton";
 import ExerciseSummary from "@/common/components/WorkoutSummary/ExerciseSummary/ExerciseSummary";
 import styles from "./WorkoutSummary.module.scss";
+import Loader from "@/common/components/Loader/Loader";
+import * as React from "react";
 
 type WorkoutSummaryProps = {
   isLoading: boolean;
@@ -9,10 +10,6 @@ type WorkoutSummaryProps = {
 };
 
 export default function WorkoutSummary(props: WorkoutSummaryProps) {
-  if (props.isLoading) {
-    return <ExerciseSkeleton />;
-  }
-
   return (
     <div className={styles.container}>
       {props.workout ? (
@@ -20,6 +17,7 @@ export default function WorkoutSummary(props: WorkoutSummaryProps) {
       ) : (
         <p>Nie znaleziono treningu</p>
       )}
+      {props.isLoading && <Loader className={styles.loader} />}
     </div>
   );
 }

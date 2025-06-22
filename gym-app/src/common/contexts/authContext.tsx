@@ -28,7 +28,7 @@ export function AppWrapper({ children }: { children: React.ReactNode }) {
   const router = useRouter();
 
   const login = async (email: string, password: string) => {
-    const response = await signIn({ email, password }, router);
+    const response = await signIn({ email, password });
     const { accessToken } = response;
     const now = new Date();
     const expiryClaim = jwtDecode(accessToken).exp;

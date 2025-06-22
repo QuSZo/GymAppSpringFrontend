@@ -64,9 +64,6 @@ export default function SignInPage() {
             className={styles.input}
             required
           />
-          <div className={styles.passwordRecoveryLink}>
-            <Link href={"/forgot-password"}>Odzyskaj hasło</Link>
-          </div>
         </div>
         <Button type={"submit"} className={styles.button}>
           Zaloguj się

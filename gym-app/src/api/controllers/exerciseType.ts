@@ -1,6 +1,5 @@
 import { UUID } from "node:crypto";
 import { customQuery } from "@/api/customFetch";
-import { useRouter } from "next/navigation";
 
 export type exerciseTypeDetails = {
   id: UUID;
@@ -8,7 +7,7 @@ export type exerciseTypeDetails = {
   exerciseCategoryId: UUID;
 };
 
-export async function getExerciseTypes(router: ReturnType<typeof useRouter>): Promise<exerciseTypeDetails[]> {
-  const response = await customQuery("exercise-types", router);
+export async function getExerciseTypes(): Promise<exerciseTypeDetails[]> {
+  const response = await customQuery("exercise-types");
   return response.json();
 }

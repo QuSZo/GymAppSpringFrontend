@@ -7,8 +7,6 @@ type DeletePopoverProps = {
   onClose: () => void;
   onDelete: () => void;
   deleteText: string;
-  followedItemId: HTMLElement | null;
-  side?: "left" | "bottom";
 };
 
 export default function DeletePopover(props: DeletePopoverProps) {
@@ -22,10 +20,8 @@ export default function DeletePopover(props: DeletePopoverProps) {
       onClose={props.onClose}
       show={props.show}
       portalRoot={"popover"}
-      followedItem={props.followedItemId}
       classNameModal={styles.modal}
       classNameOverflow={styles.overflow}
-      side={props.side}
     >
       <div className={styles.popoverContainer}>
         <p>{props.deleteText}</p>

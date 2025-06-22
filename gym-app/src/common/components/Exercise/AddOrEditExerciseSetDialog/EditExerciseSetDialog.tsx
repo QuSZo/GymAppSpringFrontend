@@ -127,7 +127,6 @@ export default function EditExerciseSetDialog(props: EditExerciseSetDialogProps)
         deleteText={"Czy na pewno usunąć serię?"}
         onClose={() => setShowPopover(false)}
         show={showPopover}
-        followedItemId={document.getElementById("showPopoverButton")}
       ></DeletePopover>
     </>
   );

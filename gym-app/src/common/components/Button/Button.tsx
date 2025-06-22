@@ -14,7 +14,6 @@ export default function Button({ styling = "normal", ...props }: ButtonProps) {
       type={props.type}
       className={cn(styles.buttonContainer, styles[styling], props.className)}
       onClick={props.onClick}
-      popoverTarget={props.popoverTarget}
     >
       {props.children}
     </button>

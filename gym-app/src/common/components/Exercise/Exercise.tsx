@@ -15,7 +15,6 @@ import EditExerciseSetDialog from "@/common/components/Exercise/AddOrEditExercis
 import { Icon } from "@/common/components/Icons/Icon/Icon";
 import { UUID } from "node:crypto";
 import DeletePopover from "@/common/components/DeletePopover/DeletePopover";
-import { useRouter } from "next/navigation";
 import { useLoaderContext } from "@/common/contexts/loaderContext";
 
 type ExerciseProps = {
@@ -30,12 +29,11 @@ export default function Exercise(props: ExerciseProps) {
   const [showPopover, setShowPopover] = useState(false);
   const [selectedSet, setSelectedSet] = useState<exerciseSetDto>();
   const popoverButtonRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
   const { setLoading } = useLoaderContext();
 
   async function onDeleteExercise() {
     setLoading(true);
-    deleteExercise(props.exercise.id, router)
+    deleteExercise(props.exercise.id)
       .then(props.onRefresh)
       .finally(() => setLoading(false));
   }
@@ -43,14 +41,14 @@ export default function Exercise(props: ExerciseProps) {
   async function onAddExerciseSet(exerciseSet: exerciseSet) {
     setLoading(true);
     const command: createExerciseSetCommand = { exerciseId: props.exercise.id, reps: exerciseSet.reps, quantity: exerciseSet.quantity };
-    createExerciseSet(command, router)
+    createExerciseSet(command)
       .then(props.onRefresh)
       .finally(() => setLoading(false));
   }
 
   async function onDeleteExerciseSet(id: UUID) {
     setLoading(true);
-    deleteExerciseSet(id, router)
+    deleteExerciseSet(id)
       .then(props.onRefresh)
       .finally(() => setLoading(false));
   }
@@ -58,7 +56,7 @@ export default function Exercise(props: ExerciseProps) {
   async function onEditExerciseSet(exerciseSetId: UUID, exerciseSet: exerciseSet) {
     setLoading(true);
     const command: updateExerciseSetCommand = { reps: exerciseSet.reps, quantity: exerciseSet.quantity };
-    updateExerciseSet(exerciseSetId, command, router)
+    updateExerciseSet(exerciseSetId, command)
       .then(props.onRefresh)
       .finally(() => setLoading(false));
   }
@@ -67,7 +65,7 @@ export default function Exercise(props: ExerciseProps) {
     if (props.isFirst && changeDirection === ChangeDirectionEnum.Up) return;
     else if (props.isLast && changeDirection === ChangeDirectionEnum.Down) return;
     setLoading(true);
-    updateExerciseNumber(props.exercise.id, { changeDirection }, router)
+    updateExerciseNumber(props.exercise.id, { changeDirection })
       .then(props.onRefresh)
       .finally(() => setLoading(false));
   }
@@ -135,8 +133,6 @@ export default function Exercise(props: ExerciseProps) {
         onClose={() => setShowPopover(false)}
         onDelete={onDeleteExercise}
         deleteText={"Czy na pewno usunąć ćwiczenie?"}
-        followedItemId={popoverButtonRef.current}
-        side={"left"}
       ></DeletePopover>
     </>
   );

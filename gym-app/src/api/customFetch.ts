@@ -1,5 +1,4 @@
 import { API_URL } from "@/api/controllers/conf";
-import { useRouter } from "next/navigation";
 import { ApiError } from "@/common/lib/ApiError";
 
 type commandMethods = "POST" | "PUT" | "PATCH" | "DELETE";
@@ -31,19 +30,12 @@ type ErrorResponse = {
   reason: string;
 };
 
-export async function customQuery(url: string, router: ReturnType<typeof useRouter>, signal?: AbortSignal): Promise<Response> {
+export async function customQuery(url: string): Promise<Response> {
   const response = await fetch(API_URL + url, {
-    signal: signal,
     headers: getHeaders(),
   });
   if (!response.ok) {
-    if (response.status === 401) {
-      router.push("/unauthorized");
-    } else if (response.status === 403) {
-      router.push("/forbidden");
-    } else if (response.status >= 500 && response.status <= 599) {
-      router.push("/error");
-    } else if (response.status === 400) {
+    if (response.status === 400) {
       const errorResponse: ErrorResponse = await response.json();
       throw new ApiError(errorResponse.code);
     } else {
@@ -56,7 +48,6 @@ export async function customQuery(url: string, router: ReturnType<typeof useRout
 export async function customCommand<TCommand>(
   url: string,
   method: commandMethods,
-  router: ReturnType<typeof useRouter>,
   body?: TCommand,
 ): Promise<Response> {
   const response = await fetch(API_URL + url, {
@@ -65,20 +56,12 @@ export async function customCommand<TCommand>(
     body: JSON.stringify(body),
   });
   if (!response.ok) {
-    if (response.status === 401) {
-      router.push("/unauthorized");
-    } else if (response.status === 403) {
-      router.push("/forbidden");
-    } else if (response.status >= 500 && response.status <= 599) {
-      router.push("/error");
-    } else if (response.status === 400) {
+    if (response.status === 400) {
       const errorResponse: ErrorResponse = await response.json();
-      console.log(errorResponse);
       throw new ApiError(errorResponse.code);
     } else {
       throw new Error(`${response.statusText}`);
     }
   }
-
   return response;
 }
